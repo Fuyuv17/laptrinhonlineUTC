@@ -69,9 +69,9 @@ export function contestStatusLabel(s: ContestStatus): string {
 }
 
 export function ratingTierColor(rating: number): BadgeVariant {
-  if (rating >= 2700) return "accent";
-  if (rating >= 2300) return "danger";
+  if (rating >= 2700) return "success";
+  if (rating >= 2300) return "info";
   if (rating >= 1900) return "warning";
-  if (rating >= 1400) return "info";
-  return "success";
+  if (rating >= 1400) return "danger";
+  return "neutral";
 }

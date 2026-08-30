@@ -23,7 +23,7 @@ export function Tr({ className = "", ...rest }: HTMLAttributes<HTMLTableRowEleme
 export function Th({ className = "", ...rest }: ThHTMLAttributes<HTMLTableCellElement>) {
   return (
     <th
-      className={`px-3 py-2 text-left text-xs font-heading uppercase tracking-widetext-text-secondary ${className}`}
+      className={`px-3 py-2 text-xs font-heading uppercase tracking-wide text-text ${className}`}
       {...rest}
     />
   );

@@ -16,9 +16,9 @@ export default function UsersPage() {
         <Table>
           <Thead>
             <Tr>
-              <Th className="w-12">#</Th>
-              <Th>Người dùng</Th>
-              <Th className="text-right">Rating</Th>
+              <Th className="text-left">#</Th>
+              <Th className="text-left">Người dùng</Th>
+              <Th className="text-center">Rating</Th>
               <Th className="lg:text-center">Số bài đã giải</Th>
             </Tr>
           </Thead>
@@ -31,7 +31,7 @@ export default function UsersPage() {
                     {u.handle}
                   </Link>
                 </Td>
-                <Td className="text-right">
+                <Td className="text-center">
                   <Badge variant={ratingTierColor(u.rating)}>{u.rating}</Badge>
                 </Td>
                 <Td className="lg:text-center font-mono">{u.solved}</Td>

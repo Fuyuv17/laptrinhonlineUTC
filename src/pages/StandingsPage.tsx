@@ -4,6 +4,7 @@ import { formatDateTime } from "../lib/format";
 import { contestStatusLabel, contestStatusVariant } from "../lib/status";
 import Badge from "../components/ui/Badge";
 import { Table, Thead, Tbody, Tr, Th, Td } from "../components/ui/Table";
+import { ratingTierColor } from "../lib/status";
 
 const STANDINGS_SLUG = "hprevoi27_03";
 
@@ -37,11 +38,11 @@ export default function StandingsPage() {
           <Table>
             <Thead>
               <Tr>
-                <Th className="w-12">#</Th>
-                <Th>Thí sinh</Th>
-                <Th className="text-right">Rating</Th>
-                <Th className="text-right">Giải</Th>
-                <Th className="text-right">Penalty</Th>
+                <Th className="text-left">#</Th>
+                <Th className="text-left">Thí sinh</Th>
+                <Th className="text-center">Rating</Th>
+                <Th className="text-center">Giải</Th>
+                <Th className="text-center">Penalty</Th>
                 {problemCodes.map((c) => (
                   <Th key={c} className="text-center">
                     {c}
@@ -58,9 +59,11 @@ export default function StandingsPage() {
                       {row.handle}
                     </Link>
                   </Td>
-                  <Td className="text-right font-mono">{row.rating}</Td>
-                  <Td className="text-right font-mono font-semibold">{row.solved}</Td>
-                  <Td className="text-right font-mono text-text">{row.penalty}</Td>
+                  <Td className="text-center font-mono">
+                    <Badge variant={ratingTierColor(row.rating)}>{row.rating}</Badge>
+                  </Td>
+                  <Td className="text-center font-mono font-semibold">{row.solved}</Td>
+                  <Td className="text-center font-mono text-text">{row.penalty}</Td>
                   {row.perProblem.map((p) => (
                     <Td key={p.code} className="text-center">
                       <div

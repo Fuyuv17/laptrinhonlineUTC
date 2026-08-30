@@ -166,13 +166,13 @@ export default function ProblemDetailPage() {
             <Table>
               <Thead>
                 <Tr>
-                  <Th>Người nộp</Th>
-                  <Th>Ngôn ngữ</Th>
-                  <Th>Kết quả</Th>
-                  <Th className="text-right">Điểm</Th>
-                  <Th className="text-right">Thời gian chạy</Th>
-                  <Th className="text-right">Bộ nhớ</Th>
-                  <Th className="hidden text-right md:table-cell">Nộp lúc</Th>
+                  <Th className="text-left">Người nộp</Th>
+                  <Th className="text-left">Ngôn ngữ</Th>
+                  <Th className="text-center">Kết quả</Th>
+                  <Th className="text-center">Điểm</Th>
+                  <Th className="text-center">Thời gian chạy</Th>
+                  <Th className="text-center">Bộ nhớ</Th>
+                  <Th className="text-center">Nộp lúc</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -184,13 +184,13 @@ export default function ProblemDetailPage() {
                       </Link>
                     </Td>
                     <Td>{s.language}</Td>
-                    <Td>
+                    <Td className="text-center">
                       <Badge variant={verdictVariant(s.verdict)}>{verdictLabel(s.verdict)}</Badge>
                     </Td>
-                    <Td className="text-right font-mono">{s.score}</Td>
-                    <Td className="text-right font-mono">{formatRuntime(s.runtimeMs)}</Td>
-                    <Td className="text-right font-mono">{formatMemory(s.memoryKb)}</Td>
-                    <Td className="hidden text-right text-text-muted md:table-cell">{formatDateTime(s.submittedAt)}</Td>
+                    <Td className="text-center font-mono">{s.score}</Td>
+                    <Td className="text-center font-mono">{formatRuntime(s.runtimeMs)}</Td>
+                    <Td className="text-center font-mono">{formatMemory(s.memoryKb)}</Td>
+                    <Td className="hidden text-center text-text-muted md:table-cell">{formatDateTime(s.submittedAt)}</Td>
                   </Tr>
                 ))}
               </Tbody>

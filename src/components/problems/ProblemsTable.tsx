@@ -22,13 +22,13 @@ export default function ProblemsTable({ problems }: ProblemsTableProps) {
     <Table>
       <Thead>
         <Tr>
-          <Th className="w-8"></Th>
-          <Th>Mã bài</Th>
-          <Th>Tên bài</Th>
-          <Th>Độ khó</Th>
-          <Th className="hidden md:table-cell">Chủ đề</Th>
-          <Th className="md:text-center">Điểm</Th>
-          <Th className="md:text-center">Tỉ lệ AC</Th>
+          <Th className="w-7"></Th>
+          <Th className="text-left">Mã bài</Th>
+          <Th className="text-center">Tên bài</Th>
+          <Th className="text-left">Độ khó</Th>
+          <Th className="text-center">Chủ đề</Th>
+          <Th className="text-center">Điểm</Th>
+          <Th className="text-center">Tỉ lệ AC</Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -49,10 +49,10 @@ export default function ProblemsTable({ problems }: ProblemsTableProps) {
                 {p.title}
               </Link>
             </Td>
-            <Td>
+            <Td className="text-left">
               <Badge variant={difficultyVariant(p.difficulty)}>{p.difficulty}</Badge>
             </Td>
-            <Td className="hidden md:table-cell">
+            <Td>
               <div className="flex flex-wrap gap-1">
                 {p.tags.map((t) => (
                   <Badge key={t} variant="neutral">
@@ -61,8 +61,8 @@ export default function ProblemsTable({ problems }: ProblemsTableProps) {
                 ))}
               </div>
             </Td>
-            <Td className="md:text-center font-mono">{p.points}</Td>
-            <Td className="md:text-center font-mono">{p.acRate}%</Td>
+            <Td className="text-center font-mono">{p.points}</Td>
+            <Td className="text-center font-mono">{p.acRate}%</Td>
           </Tr>
         ))}
       </Tbody>

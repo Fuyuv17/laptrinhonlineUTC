@@ -54,10 +54,10 @@ export default function UserProfilePage() {
             <Table>
               <Thead>
                 <Tr>
-                  <Th>Bài tập</Th>
-                  <Th>Ngôn ngữ</Th>
-                  <Th>Kết quả</Th>
-                  <Th className="hidden text-right md:table-cell">Nộp lúc</Th>
+                  <Th className="text-left">Bài tập</Th>
+                  <Th className="text-left">Ngôn ngữ</Th>
+                  <Th className="text-center">Kết quả</Th>
+                  <Th className="text-center">Nộp lúc</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -69,10 +69,10 @@ export default function UserProfilePage() {
                       </Link>
                     </Td>
                     <Td>{s.language}</Td>
-                    <Td>
+                    <Td className="text-text-muted text-center">
                       <Badge variant={verdictVariant(s.verdict)}>{verdictLabel(s.verdict)}</Badge>
                     </Td>
-                    <Td className="hidden text-right text-text-muted md:table-cell">{formatDateTime(s.submittedAt)}</Td>
+                    <Td className="text-text-muted text-center">{formatDateTime(s.submittedAt)}</Td>
                   </Tr>
                 ))}
               </Tbody>

@@ -28,7 +28,7 @@ export default function ContestsPage() {
             type="button"
             onClick={() => setStatus(f)}
             className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
-              status === f ? "bg-accent text-white" : "bg-surface-alt text-text-secondary hover:text-text"
+              status === f ? "bg-accent text-white" : "bg-surface-alt text-text-muted hover:text-text"
             }`}
           >
             {f === "all" ? "Tất cả" : contestStatusLabel(f)}

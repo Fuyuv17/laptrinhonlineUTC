@@ -15,21 +15,21 @@ export default function SubmissionsPage() {
         <Table>
           <Thead className="font-heading">
             <Tr>
-              <Th>Người nộp</Th>
-              <Th>Bài tập</Th>
-              <Th>Ngôn ngữ</Th>
+              <Th className="text-left">Người nộp</Th>
+              <Th className="text-center">Bài tập</Th>
+              <Th className="text-left">Ngôn ngữ</Th>
               <Th className="text-center">Kết quả</Th>
               <Th className="text-center">Điểm</Th>
-              <Th className="hidden text-center md:table-cell">Thời gian chạy</Th>
-              <Th className="hidden text-right md:table-cell">Bộ nhớ</Th>
-              <Th className="hidden text-right lg:table-cell">Nộp lúc</Th>
+              <Th className="text-center">Thời gian chạy</Th>
+              <Th className="text-center">Bộ nhớ</Th>
+              <Th className="text-center">Nộp lúc</Th>
             </Tr>
           </Thead>
           <Tbody>
             {submissions.map((s) => (
               <Tr key={s.id}>
                 <Td>
-                  <Link to={`/users/${s.user}`} className="font-mono text-text-secondary hover:text-accent">
+                  <Link to={`/users/${s.user}`} className="font-mono text-center text-text-secondary hover:text-accent">
                     {s.user}
                   </Link>
                 </Td>
@@ -39,13 +39,13 @@ export default function SubmissionsPage() {
                   </Link>
                 </Td>
                 <Td>{s.language}</Td>
-                <Td>
+                <Td className="text-center">
                   <Badge variant={verdictVariant(s.verdict)}>{verdictLabel(s.verdict)}</Badge>
                 </Td>
                 <Td className="text-center font-mono">{s.score}</Td>
                 <Td className="hidden text-center font-mono md:table-cell">{formatRuntime(s.runtimeMs)}</Td>
-                <Td className="hidden text-right font-mono md:table-cell">{formatMemory(s.memoryKb)}</Td>
-                <Td className="hidden text-right text-text-muted lg:table-cell">{formatDateTime(s.submittedAt)}</Td>
+                <Td className="hidden text-center font-mono md:table-cell">{formatMemory(s.memoryKb)}</Td>
+                <Td className="hidden text-center text-text-muted lg:table-cell">{formatDateTime(s.submittedAt)}</Td>
               </Tr>
             ))}
           </Tbody>
