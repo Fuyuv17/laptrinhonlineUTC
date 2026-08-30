@@ -11,7 +11,7 @@ export default function Textarea({ label, id, className = "", ...rest }: Textare
   return (
     <div className="flex flex-col gap-1.5">
       {label && (
-        <label htmlFor={areaId} className="text-xs font-medium uppercase tracking-wide text-text-secondary">
+        <label htmlFor={areaId} className="text-xs font-medium uppercase tracking-wide text-text">
           {label}
         </label>
       )}

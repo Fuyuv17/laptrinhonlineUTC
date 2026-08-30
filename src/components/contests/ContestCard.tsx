@@ -48,11 +48,11 @@ export default function ContestCard({ contest }: ContestCardProps) {
       {contest.status === "live" && <CountdownTimer target={endTime} prefix="Kết thúc sau" overLabel="Đã kết thúc" />}
 
       {cta.to ? (
-        <Link to={cta.to} className={buttonClasses("primary", "sm", "mt-1 self-start shadow-md shadow-gray-500")}>
+        <Link to={cta.to} className={buttonClasses("primary", "sm", "mt-1 self-start shadow-md hover:shadow-gray-500")}>
           {cta.label}
         </Link>
       ) : (
-        <button type="button" className={buttonClasses("outline", "sm", "mt-1 self-start shadow-md shadow-gray-500")} disabled>
+        <button type="button" className={buttonClasses("outline", "sm", "mt-1 self-start shadow-md hover:shadow-gray-500")} disabled>
           {cta.label}
         </button>
       )}

@@ -97,25 +97,25 @@ export default function ProblemDetailPage() {
 
       {tab === "statement" && (
         <Card className="mt-4 space-y-5" padded>
-          <p className="text-lg leading-relaxed text-text">{detail.statement}</p>
-
+          <p className="font-info font-medium text-semibold text-lg leading-relaxed text-text">{detail.statement}</p>
+          <hr className="my-4 border-border-strong" />
           <div>
-            <h3 className="font-heading text-base text-text">Dữ liệu vào</h3>
-            <p className="mt-1 text-sm text-text-secondary">{detail.inputFormat}</p>
+            <h3 className="text-md font-medium font-mono text-base text-text tracking-tighter">Dữ liệu vào</h3>
+            <p className="mt-1 font-medium font-info text-sm text-text-secondary">{detail.inputFormat}</p>
           </div>
 
           <div>
-            <h3 className="font-heading text-base font-bold text-text">Dữ liệu ra</h3>
-            <p className="mt-1 text-sm text-text-secondary">{detail.outputFormat}</p>
+            <h3 className="text-md font-medium  font-mono text-base font-bold text-text tracking-tighter">Dữ liệu ra</h3>
+            <p className="mt-1 font-medium font-info text-sm text-text-secondary">{detail.outputFormat}</p>
           </div>
 
           <div>
-            <h3 className="font-heading text-base font-bold text-text">Giới hạn</h3>
-            <p className="mt-1 font-mono text-sm text-text-secondary">{detail.constraints}</p>
+            <h3 className="text-md font-medium  font-mono text-base font-bold text-text tracking-tighter">Giới hạn</h3>
+            <p className="mt-1 font-medium font-info text-sm text-text-secondary">{detail.constraints}</p>
           </div>
 
           <div className="space-y-3">
-            <h3 className="font-heading text-base font-bold text-text">Ví dụ</h3>
+            <h3 className="text-md font-medium font-mono text-base font-bold text-text tracking-tighter">Ví dụ</h3>
             {detail.examples.map((ex, i) => (
               <div key={i} className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
@@ -150,7 +150,7 @@ export default function ProblemDetailPage() {
             onChange={(e) => setCode(e.target.value)}
           />
           <div className="flex items-center gap-3">
-            <Button onClick={handleSubmit}>Nộp bài</Button>
+            <Button onClick={handleSubmit} className="bg-accent text-white shadow-md hover:shadow-gray-500">Nộp bài</Button>
             <span className="text-xs text-text-muted">Bản demo giao diện — bài nộp không được chấm thật.</span>
           </div>
         </Card>
