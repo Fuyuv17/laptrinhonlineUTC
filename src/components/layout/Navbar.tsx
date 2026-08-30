@@ -26,7 +26,7 @@ export default function Navbar() {
         <span>UTCOJ</span>
       </Link>
 
-      <nav className="hidden items-center gap-7 md:flex absolute left-1/2 -translate-x-1/2">
+      <nav className="hidden items-center gap-17 md:flex absolute left-1/2 -translate-x-1/2">
         {navLinks.map((link) => (
           <NavLink
             key={link.to}

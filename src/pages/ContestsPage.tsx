@@ -3,6 +3,7 @@ import ContestCard from "../components/contests/ContestCard";
 import { contests } from "../data/contests";
 import type { ContestStatus } from "../lib/types";
 import { contestStatusLabel } from "../lib/status";
+import {Trophy } from "lucide-react";
 
 type StatusFilter = ContestStatus | "all";
 
@@ -18,7 +19,10 @@ export default function ContestsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="font-heading text-2xl font-bold text-text">Kỳ thi</h1>
+      <h1 className="flex items-center gap-2 font-heading text-2xl font-bold text-text">
+          <Trophy className="h-5 w-5 text-accent" />
+          Kỳ thi
+        </h1>
       <p className="mt-1 text-sm text-text-secondary">{contests.length} kỳ thi trong hệ thống.</p>
 
       <div className="mt-6 flex flex-wrap gap-2">
