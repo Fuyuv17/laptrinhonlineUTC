@@ -6,7 +6,7 @@ import { formatDateTime, formatDuration } from "../../lib/format";
 import Badge from "../ui/Badge";
 import Card from "../ui/Card";
 import CountdownTimer from "../ui/CountdownTimer";
-import { buttonClasses } from "../../lib/variants";
+import { Button, buttonVariants } from "../ui/Button";
 
 interface ContestCardProps {
   contest: Contest;
@@ -48,13 +48,22 @@ export default function ContestCard({ contest }: ContestCardProps) {
       {contest.status === "live" && <CountdownTimer target={endTime} prefix="Kết thúc sau" overLabel="Đã kết thúc" />}
 
       {cta.to ? (
-        <Link to={cta.to} className={buttonClasses("primary", "sm", "mt-1 self-start shadow-md hover:shadow-gray-500")}>
+        <Link 
+          to={cta.to} 
+          className={`${buttonVariants({ variant: "default", size: "sm" })} mt-1 self-start shadow-md hover:shadow-gray-500`}
+        >
           {cta.label}
         </Link>
       ) : (
-        <button type="button" className={buttonClasses("outline", "sm", "mt-1 self-start shadow-md hover:shadow-gray-500")} disabled>
+        <Button 
+          type="button"
+          variant="outline" 
+          size="sm" 
+          className="mt-1 self-start shadow-md hover:shadow-gray-500" 
+          disabled
+        >
           {cta.label}
-        </button>
+        </Button>
       )}
     </Card>
   );

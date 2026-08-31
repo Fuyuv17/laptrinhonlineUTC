@@ -4,8 +4,7 @@ import { UserPlus } from "lucide-react";
 import { useAuth } from "../lib/AuthContext";
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
-import {Button} from "@/components/ui/Button"
-import { buttonClasses } from "@/lib/variants";
+import { Button } from "@/components/ui/Button";
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -46,14 +45,14 @@ export default function RegisterPage() {
             onChange={set("confirm")}
             error={error}
           />
-          <Button type="submit" className={ buttonClasses("primary" , "lg", "shadow-md shadow-gray-500")} size={"lg"}>
+          <Button type="submit" variant="default" size="lg" className="shadow-md shadow-gray-500">
             Tạo tài khoản
           </Button>
         </form>
 
         <p className="mt-6 text-center text-sm text-text-secondary">
-          Đã có tài khoản ?{" "}
-          <Link to="/login" className="text-accent hover:underline">
+          Đã có tài khoản?{" "}
+          <Link to="/login" className="font-bold text-accent hover:underline">
             Đăng nhập
           </Link>
         </p>

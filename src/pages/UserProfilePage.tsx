@@ -45,7 +45,8 @@ export default function UserProfilePage() {
 
       <section className="mt-8">
         <h2 className="font-heading text-lg font-bold text-text">Bài nộp gần đây</h2>
-        <div className="mt-4">
+        {/* Thêm overflow-x-auto để bảng có thể vuốt ngang trên mobile */}
+        <div className="mt-4 overflow-x-auto">
           {userSubmissions.length === 0 ? (
             <div className="rounded-[7px] border border-dashed border-border-strong py-10 text-center text-sm text-text-muted">
               Chưa có dữ liệu bài nộp.
@@ -54,25 +55,26 @@ export default function UserProfilePage() {
             <Table>
               <Thead>
                 <Tr>
-                  <Th className="text-left">Bài tập</Th>
-                  <Th className="text-left">Ngôn ngữ</Th>
-                  <Th className="text-center">Kết quả</Th>
-                  <Th className="text-center">Nộp lúc</Th>
+                  {/* Ép chiều rộng tối thiểu cho cột Bài tập */}
+                  <Th className="text-left min-w-[200px]">Bài tập</Th>
+                  <Th className="text-left whitespace-nowrap">Ngôn ngữ</Th>
+                  <Th className="text-center whitespace-nowrap">Kết quả</Th>
+                  <Th className="text-center whitespace-nowrap">Nộp lúc</Th>
                 </Tr>
               </Thead>
               <Tbody>
                 {userSubmissions.map((s) => (
                   <Tr key={s.id}>
                     <Td>
-                      <Link to={`/problems/${s.problemCode}`} className="text-text hover:text-accent">
+                      <Link to={`/problems/${s.problemCode}`} className="font-medium text-text hover:text-accent">
                         {s.problemTitle}
                       </Link>
                     </Td>
-                    <Td>{s.language}</Td>
-                    <Td className="text-text-muted text-center">
+                    <Td className="whitespace-nowrap">{s.language}</Td>
+                    <Td className="text-text-muted text-center whitespace-nowrap">
                       <Badge variant={verdictVariant(s.verdict)}>{verdictLabel(s.verdict)}</Badge>
                     </Td>
-                    <Td className="text-text-muted text-center">{formatDateTime(s.submittedAt)}</Td>
+                    <Td className="text-text-muted text-center whitespace-nowrap">{formatDateTime(s.submittedAt)}</Td>
                   </Tr>
                 ))}
               </Tbody>

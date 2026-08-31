@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from "react";
-import { cardClasses } from "../../lib/variants";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   padded?: boolean;
@@ -7,7 +6,10 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 export default function Card({ padded = true, className = "", children, ...rest }: CardProps) {
   return (
-    <div className={cardClasses(`${padded ? "p-6" : ""} ${className}`)} {...rest}>
+    <div 
+      className={`bg-surface border border-border rounded-[7px] shadow-raised ${padded ? "p-6" : ""} ${className}`.trim()} 
+      {...rest}
+    >
       {children}
     </div>
   );

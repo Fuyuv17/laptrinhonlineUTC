@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { buttonClasses } from "../../lib/variants";
+import { Button, buttonVariants } from "../ui/Button";
 import { useAuth } from "../../lib/AuthContext";
 
 const navLinks = [
@@ -16,8 +16,8 @@ export default function Navbar() {
   const { user, logout } = useAuth();
 
   return (
-    <header className="sticky top-0 z-100 flex h-16 w-full items-center justify-between bg-navbar px-4 shadow-raised">
-      <Link to="/" className="flex items-center gap-2.5 font-heading text-lg font-bold text-white">
+    <header className="sticky top-0 z-100 flex h-16 w-full items-center justify-between gap-4 bg-navbar px-4 shadow-raised">
+      <Link to="/" className="flex shrink-0 items-center gap-2.5 font-heading text-lg font-bold text-white">
         <img 
           src="/UTClogo.svg" 
           alt="Logo UTC" 
@@ -26,7 +26,7 @@ export default function Navbar() {
         <span>UTCOJ</span>
       </Link>
 
-      <nav className="hidden items-center gap-17 md:flex absolute left-1/2 -translate-x-1/2">
+      <nav className="hidden flex-1 items-center justify-center gap-4 lg:gap-12 md:flex">
         {navLinks.map((link) => (
           <NavLink
             key={link.to}
@@ -42,22 +42,22 @@ export default function Navbar() {
         ))}
       </nav>
 
-      <div className="hidden items-center gap-2 md:flex">
+      <div className="hidden shrink-0 items-center gap-2 md:flex">
         {user ? (
           <>
             <Link to={`/users/${user.handle}`} className="px-2 font-mono text-sm text-white/90 hover:text-white">
               {user.handle}
             </Link>
-            <button onClick={logout} className={buttonClasses("outline", "sm", "border-white/30 text-white hover:border-accent-2 hover:text-accent-2")}>
+            <Button onClick={logout} variant="outline" size="sm" className="border-white/30 text-white hover:border-accent-2 hover:text-accent-2">
               Đăng xuất
-            </button>
+            </Button>
           </>
         ) : (
           <>
-            <Link to="/login" className={buttonClasses("outline", "sm", "border-white/30 text-white hover:border-accent-2 hover:text-accent-2")}>
+            <Link to="/login" className={`${buttonVariants({ variant: "outline", size: "sm" })} border-white/30 text-white hover:border-accent-2 hover:text-accent-2`}>
               Đăng nhập
             </Link>
-            <Link to="/register" className={buttonClasses("surface", "sm")}>
+            <Link to="/register" className={buttonVariants({ variant: "surface", size: "sm" })}>
               Đăng ký  
             </Link>
           </>
@@ -92,15 +92,15 @@ export default function Navbar() {
           </nav>
           <div className="mt-3 flex gap-2">
             {user ? (
-              <button onClick={logout} className={buttonClasses("outline", "sm", "flex-1 border-white/30 text-white")}>
+              <Button onClick={logout} variant="outline" size="sm" className="flex-1 border-white/30 text-white">
                 Đăng xuất ({user.handle})
-              </button>
+              </Button>
             ) : (
               <>
-                <Link to="/login" onClick={() => setOpen(false)} className={buttonClasses("outline", "sm", "flex-1 border-white/30 text-white")}>
+                <Link to="/login" onClick={() => setOpen(false)} className={`${buttonVariants({ variant: "outline", size: "sm" })} flex-1 border-white/30 text-white`}>
                   Đăng nhập
                 </Link>
-                <Link to="/register" onClick={() => setOpen(false)} className={buttonClasses("surface", "sm", "flex-1")}>
+                <Link to="/register" onClick={() => setOpen(false)} className={`${buttonVariants({ variant: "surface", size: "sm" })} flex-1`}>
                   Đăng ký
                 </Link>
               </>

@@ -65,7 +65,7 @@ export default function ProblemDetailPage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
+    <div className="mx-auto max-w-5xl px-4 py-8 overflow-hidden">
       <div className="flex flex-wrap items-center gap-3">
         <span className="font-mono text-sm text-text-secondary">{problem.code}</span>
         <h1 className="font-heading text-2xl font-bold text-text">{problem.title}</h1>
@@ -100,33 +100,33 @@ export default function ProblemDetailPage() {
           <p className="font-info font-medium text-semibold text-lg leading-relaxed text-text">{detail.statement}</p>
           <hr className="my-4 border-border-strong" />
           <div>
-            <h3 className="text-md font-medium font-mono text-base text-text tracking-tighter">Dữ liệu vào</h3>
+            <h3 className="text-md font-medium font-mono text-base text-text">Dữ liệu vào</h3>
             <p className="mt-1 font-medium font-info text-sm text-text-secondary">{detail.inputFormat}</p>
           </div>
 
           <div>
-            <h3 className="text-md font-medium  font-mono text-base font-bold text-text tracking-tighter">Dữ liệu ra</h3>
+            <h3 className="text-md font-medium  font-mono text-base font-bold text-text">Dữ liệu ra</h3>
             <p className="mt-1 font-medium font-info text-sm text-text-secondary">{detail.outputFormat}</p>
           </div>
 
           <div>
-            <h3 className="text-md font-medium  font-mono text-base font-bold text-text tracking-tighter">Giới hạn</h3>
+            <h3 className="text-md font-medium  font-mono text-base font-bold text-text">Giới hạn</h3>
             <p className="mt-1 font-medium font-info text-sm text-text-secondary">{detail.constraints}</p>
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-md font-medium font-mono text-base font-bold text-text tracking-tighter">Ví dụ</h3>
+            <h3 className="text-md font-medium font-mono text-base font-bold text-text">Ví dụ</h3>
             {detail.examples.map((ex, i) => (
               <div key={i} className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <div className="mb-1 text-xs font-medium uppercase text-text-secondary">Input</div>
-                  <pre className="whitespace-pre-wrap rounded-[7px] bg-surface-alt p-3 font-mono text-sm text-text">{ex.input}</pre>
+                  <pre className="whitespace-pre-wrap rounded-[7px] bg-surface-alt p-3 font-mono text-sm text-text overflow-x-auto">{ex.input}</pre>
                 </div>
                 <div>
                   <div className="mb-1 text-xs font-medium uppercase text-text-secondary">Output</div>
-                  <pre className="whitespace-pre-wrap rounded-[7px] bg-surface-alt p-3 font-mono text-sm text-text">{ex.output}</pre>
+                  <pre className="whitespace-pre-wrap rounded-[7px] bg-surface-alt p-3 font-mono text-sm text-text overflow-x-auto">{ex.output}</pre>
                 </div>
-                {ex.explanation && <p className="sm:col-span-2 text-sm text-text-secondary">{ex.explanation}</p>}
+                {ex.explanation && <p className="sm:col-span-2 font-medium font-info text-text-secondary">{ex.explanation}</p>}
               </div>
             ))}
           </div>
@@ -134,30 +134,34 @@ export default function ProblemDetailPage() {
       )}
 
       {tab === "submit" && (
-        <Card className="mt-4 space-y-4" padded>
-          <Select label="Ngôn ngữ" value={language} onChange={(e) => setLanguage(e.target.value)}>
-            {languages.map((l) => (
-              <option key={l} value={l}>
-                {l}
-              </option>
-            ))}
-          </Select>
-          <Textarea
-            label="Mã nguồn"
-            rows={14}
-            placeholder="Dán mã nguồn của bạn tại đây..."
-            value={sourceCode}
-            onChange={(e) => setCode(e.target.value)}
-          />
-          <div className="flex items-center gap-3">
-            <Button onClick={handleSubmit} className="bg-accent text-white shadow-md hover:shadow-gray-500">Nộp bài</Button>
+        <Card className="mt-4 space-y-4 w-full" padded>
+          <div className="w-full">
+            <Select label="Ngôn ngữ" value={language} onChange={(e) => setLanguage(e.target.value)}>
+              {languages.map((l) => (
+                <option key={l} value={l}>
+                  {l}
+                </option>
+              ))}
+            </Select>
+          </div>
+          <div className="w-full">
+            <Textarea
+              label="Mã nguồn"
+              rows={14}
+              placeholder="Dán mã nguồn của bạn tại đây..."
+              value={sourceCode}
+              onChange={(e) => setCode(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <Button onClick={handleSubmit} className="bg-accent text-white shadow-md hover:shadow-gray-500 w-full sm:w-auto">Nộp bài</Button>
             <span className="text-xs text-text-muted">Bản demo giao diện — bài nộp không được chấm thật.</span>
           </div>
         </Card>
       )}
 
       {tab === "submissions" && (
-        <div className="mt-4">
+        <div className="mt-4 overflow-x-auto">
           {problemSubmissions.length === 0 ? (
             <div className="rounded-[7px] border border-dashed border-border-strong py-12 text-center text-sm text-text-muted">
               Chưa có bài nộp nào cho bài này.
@@ -166,31 +170,31 @@ export default function ProblemDetailPage() {
             <Table>
               <Thead>
                 <Tr>
-                  <Th className="text-left">Người nộp</Th>
-                  <Th className="text-left">Ngôn ngữ</Th>
-                  <Th className="text-center">Kết quả</Th>
-                  <Th className="text-center">Điểm</Th>
-                  <Th className="text-center">Thời gian chạy</Th>
-                  <Th className="text-center">Bộ nhớ</Th>
-                  <Th className="text-center">Nộp lúc</Th>
+                  <Th className="text-left whitespace-nowrap">Người nộp</Th>
+                  <Th className="text-left whitespace-nowrap">Ngôn ngữ</Th>
+                  <Th className="text-center whitespace-nowrap">Kết quả</Th>
+                  <Th className="text-center whitespace-nowrap">Điểm</Th>
+                  <Th className="text-center whitespace-nowrap">Thời gian chạy</Th>
+                  <Th className="text-center whitespace-nowrap">Bộ nhớ</Th>
+                  <Th className="text-center whitespace-nowrap">Nộp lúc</Th>
                 </Tr>
               </Thead>
               <Tbody>
                 {problemSubmissions.map((s) => (
                   <Tr key={s.id}>
-                    <Td>
+                    <Td className="whitespace-nowrap">
                       <Link to={`/users/${s.user}`} className="font-mono text-text hover:text-accent">
                         {s.user}
                       </Link>
                     </Td>
-                    <Td>{s.language}</Td>
-                    <Td className="text-center">
+                    <Td className="whitespace-nowrap">{s.language}</Td>
+                    <Td className="text-center whitespace-nowrap">
                       <Badge variant={verdictVariant(s.verdict)}>{verdictLabel(s.verdict)}</Badge>
                     </Td>
-                    <Td className="text-center font-mono">{s.score}</Td>
-                    <Td className="text-center font-mono">{formatRuntime(s.runtimeMs)}</Td>
-                    <Td className="text-center font-mono">{formatMemory(s.memoryKb)}</Td>
-                    <Td className="hidden text-center text-text-muted md:table-cell">{formatDateTime(s.submittedAt)}</Td>
+                    <Td className="text-center font-mono whitespace-nowrap">{s.score}</Td>
+                    <Td className="text-center font-mono whitespace-nowrap">{formatRuntime(s.runtimeMs)}</Td>
+                    <Td className="text-center font-mono whitespace-nowrap">{formatMemory(s.memoryKb)}</Td>
+                    <Td className="text-center text-text-muted whitespace-nowrap">{formatDateTime(s.submittedAt)}</Td>
                   </Tr>
                 ))}
               </Tbody>

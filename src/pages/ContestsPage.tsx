@@ -20,7 +20,7 @@ export default function ContestsPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <h1 className="flex items-center gap-2 font-heading text-2xl font-bold text-text">
-          <Trophy className="h-5 w-5 text-accent" />
+          <Trophy className="h-6 w-6 text-accent" />
           Kỳ thi
         </h1>
       <p className="mt-1 text-sm text-text-secondary">{contests.length} kỳ thi trong hệ thống.</p>

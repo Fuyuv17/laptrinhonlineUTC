@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import ProblemFilters, { type ProblemFilterState } from "../components/problems/ProblemFilters";
 import ProblemsTable from "../components/problems/ProblemsTable";
 import { problems, tagList } from "../data/problems";
+import {Library } from "lucide-react";
 
 const initialFilters: ProblemFilterState = {
   search: "",
@@ -30,7 +31,10 @@ export default function ProblemsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="font-heading text-2xl font-bold text-text">Bài tập</h1>
+      <h1 className="flex items-center gap-2 font-heading text-2xl font-bold text-text">
+        <Library className="h-8 w-8 text-accent" />
+        Bài tập
+        </h1>
       <p className="mt-1 text-sm text-text-secondary">{problems.length} bài tập trong hệ thống.</p>
 
       <div className="mt-6">

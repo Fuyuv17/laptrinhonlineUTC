@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Code2, Trophy } from "lucide-react";
-import { buttonClasses } from "../lib/variants";
+import { buttonVariants } from "../components/ui/Button";
 import StatCard from "../components/ui/StatCard";
 import ContestCard from "../components/contests/ContestCard";
 import { problems } from "../data/problems";
@@ -28,11 +28,11 @@ export default function HomePage() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link to="/problems" className={`${buttonClasses("surface", "lg")} group`}>
-              <Code2 className="h-4.5 w-4.5 transition-transform duration-200 group-hover:scale-125" />
+            <Link to="/problems" className={`${buttonVariants({ variant: "surface", size: "lg" })} group`}>
+              <Code2 className="h-6 w-6 transition-transform duration-200 group-hover:scale-125" />
                Giải bài
             </Link>
-            <Link to="/contests" className={`${buttonClasses("outline", "lg", "border-white/40 text-white hover:border-white hover:text-white")} group`}>
+            <Link to="/contests" className={`${buttonVariants({ variant: "outline", size: "lg" })} group border-white/40 text-white hover:border-white hover:text-white`}>
               <Trophy className="h-4 w-4 transition-transform duration-200 group-hover:scale-125 group-hover:-rotate-12" />
               <span>Tham gia kỳ thi</span>
             </Link>
@@ -48,7 +48,7 @@ export default function HomePage() {
 
       <section className="mt-10">
         <h2 className="flex items-center gap-2 font-heading text-2xl font-bold text-text">
-          <Trophy className="h-5 w-5 text-accent" />
+          <Trophy className="h-6 w-6 text-accent" />
           Kỳ thi
         </h2>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
